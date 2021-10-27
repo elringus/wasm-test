@@ -1,0 +1,13 @@
+
+<script src="_framework/blazor.webassembly.js" autostart="false"></script>
+
+<script>
+    window.getTime = () => {
+        return new Date().toJSON();
+    };
+    window.onload = async function () {
+        await Blazor.start();
+        const msg = await DotNet.invokeMethodAsync("WasmTest", "BuildMessage", "John");
+        console.log(msg);
+    };
+</script>
